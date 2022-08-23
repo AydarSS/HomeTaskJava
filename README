@@ -1,0 +1,44 @@
+Моменты:
+- Доступ по localhost:8080
+- Файлы должны лежать в папке resources/files
+- Файлы необходимо вводить с расширением
+- Настройки бд в application.properties
+
+Классы:
+ 
+Контроллеры:
+ClientEmulationController - это эмулятор клиента, который возвращает html шаблоны с input формами - куда вводятся данные.
+RequestController - это контроллер, в котором реализованы методы из задания (saveXsd, validateXml, saveXml, getXml)
+
+Сервисы
+XmlXsdWorker - сама бизнес логика из api - сервиса
+	методы
+	- savexsd сохранение в БД связи названия XML-файла и XSD-схемы
+	- validatexml валидация XML-файла
+	- savexml сохранение XML-файла
+	- getxml  получение XML-файла по названию
+FileExistsChecker - класс проверки, что xml и xsd файлы есть в файловой директории
+
+Entities:
+NotValidXmlEntity - для невалидных файловой
+ProceedEntity  - таблица ProceedEntity
+ValidXmlEntity - для валидный файловой
+XmlXsdRelationEntity - таблица связи xml и xsd
+
+Models (модели)
+XmlFileDTO - модель надстройка над сущностями, также конвертирует сущности в объект данного класса
+Status - enum со статусами для валидных, невалидных и несохраненных файловой
+
+пакет exceptions
+ApiException - апи для исключений
+ApiExceptionHandler - обработчик исключений, который формирует ответ с ошибками
+ApiRequestException - само исключение 
+ExceptionText - enum с текстом ошибок и кодом
+
+пакет Repositories -  набор интерфейсов jpa репозиториев для сущностей:
+NotValidXmlRepository - для NotValidXmlEntity
+ProceedRepository - для ProceedEntity
+ValidXmlRepository - для ValidXmlEntity
+XmlXsdRelationRepository - для XmlXsdRelationEntity
+
+  
