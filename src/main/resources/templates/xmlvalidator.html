@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Validate XML</title>
+</head>
+<body>
+
+<form th:action="@{/xmlvalidator/checker}" th:object="${xmlfile}" th:method="POST">
+    <label for="xmlfilename">Enter xml file name. For example: <strong>user.xml</strong></label>
+    <input type="text" th:field="*{xmlFileName}" id ="xmlfilename"/>
+    <br/>
+    <br/>
+    <input type="submit" value="Submit"/>
+</form>
+
+</body>
+</html>
